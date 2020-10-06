@@ -3,7 +3,6 @@
 # @description      This script identifies the EC2 instances attached to the AutoScaling Groups used in development. Instances are shut down and detached from the ASG. Sends notification to slack channel. Use this script to save costs in development accounts.
 # @instructions     Scheduled CloudWatch event to be trigger this script as a Lambda function every Friday evening at 6pm.
 import boto3
-import datetime
 import logging
 
 # Set ASG's to be managed here:
@@ -43,8 +42,8 @@ def lambda_handler(event, context):
                 ],
                 Tags=[
                     {
-                        'Key': 'dev',
-                        'Value': 'instance-shutdown'
+                        'Key': 'dev-autoscalinggroup',
+                        'Value': asgName
                     }
                 ]
             )
@@ -73,7 +72,6 @@ def lambda_handler(event, context):
         response = asgClient.update_auto_scaling_group(
             AutoScalingGroupName=asg,
             MinSize=0,
-            MaxSize=0,
             DesiredCapacity=0
         )
         logging.info('Setting desired capacity = 0 for AutoScaling Group ' + asg)

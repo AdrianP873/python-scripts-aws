@@ -1,12 +1,12 @@
 # @name             Development ASG shutdown
 # @author           Adrian Plummer
 # @description      This script identifies the EC2 instances attached to the AutoScaling Groups used in development. Instances are shut down and detached from the ASG. Sends notification to slack channel. Use this script to save costs in development accounts.
-# @instructions     Scheduled CloudWatch event to be trigger this script as a Lambda function every Friday evening at 6pm.
+# @instructions     Scheduled CloudWatch event to trigger this script as a Lambda function every Friday evening at 6pm.
 import boto3
 import logging
 
 # Set ASG's to be managed here:
-devAsg = ['eks-test-asg', 'eksctl-prod-nodegroup-ng-581eefce-NodeGroup-GL022APYTYEF']
+devAsg = ['test-asg1', 'test-asg2']
 
 # === DO NOT MODIFY BELOW ===
 

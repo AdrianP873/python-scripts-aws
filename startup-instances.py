@@ -1,7 +1,7 @@
 # @name             Development ASG shutdown
 # @author           Adrian Plummer
 # @description      This script identifies the EC2 instances attached to the AutoScaling Groups used in development. Instances are start up and attached to the ASG. Use this script in conjunction with shutdown-instances.py to save costs in development accounts.
-# @instructions     Scheduled CloudWatch event to be trigger this script as a Lambda function every Monday morning at 7am.
+# @instructions     Scheduled CloudWatch event to trigger this script as a Lambda function every Monday morning at 7am.
 
 import boto3
 import logging
